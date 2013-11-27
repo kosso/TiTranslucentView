@@ -6,4 +6,7 @@ An attempt at making a Titanium module to provide a 'live' translucent/bluff eff
 Based on https://github.com/ivoleko/ILTranslucentView 
 
 
-See ExampleApp. 
+See the ExampleApp folder for tests.
+
+
+Pleease do feel free to fork etc. and help fix this up. (I don't really know what I'm doing in Objective-C, but it seems to work!) 
