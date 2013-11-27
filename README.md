@@ -5,6 +5,8 @@ An attempt at making a Titanium module to provide a 'live' translucent/bluff eff
 
 Based on https://github.com/ivoleko/ILTranslucentView 
 
+## For some reason changing the color works on the simulator but not the device.
+
 
 See the ExampleApp folder for tests.
 
