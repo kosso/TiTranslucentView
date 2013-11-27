@@ -211,6 +211,8 @@
         
         self.ilColorBG=c;
         if (_translucent) {
+             NSLog(@"[INFO] setBackgroundColor here %@", c);
+            
             overlayBackgroundView.backgroundColor = c;
             [super setBackgroundColor:[UIColor clearColor]];
         }
@@ -372,26 +374,38 @@
     
 }
 
-- (void) setBackgroundColor_:(id)value {
++ (UIImage *)maskedImage {
+    const float colorMask[6] = {222, 255, 222, 255, 222, 255};
+    UIImage *img = [UIImage imageNamed:@"nav-white-pixel-bg.jpg"];
+    return [UIImage imageWithCGImage: CGImageCreateWithMaskingColors(img.CGImage, colorMask)];
+}
+
+
+- (void) setTranslucentBackgroundColor_:(id)value {
     
-    // [[[TiColor alloc] initWithColor:color name:@"#fff"] autorelease]
     UIColor *c = [[TiUtils colorValue:value] _color];
     
-    //changing backgroundColor of view actually change tintColor of toolbar
     if (initComplete) {
         
         self.ilColorBG=c;
         if (_translucent) {
+            NSLog(@"[INFO] setTranslucentBackgroundColor_ _translucent here : %@", c);
+
             overlayBackgroundView.backgroundColor = c;
+            //overlayBackgroundView.backgroundColor = c;
+            //[self setBackgroundColor:[UIColor clearColor]];
+            
             [super setBackgroundColor:[UIColor clearColor]];
-        }
-        else {
-            [super setBackgroundColor:self.ilColorBG];
+        } else {
+            NSLog(@"[INFO] setTranslucentBackgroundColor_ here");
+            [overlayBackgroundView setBackgroundColor:self.ilColorBG];
         }
         
-    }
-    else
+    } else {
+        NSLog(@"[INFO] setTranslucentBackgroundColor_ setting it here");
+
         [super setBackgroundColor:c];
+    }
 }
 
 - (void) setTranslucentTintColor_:(id)value {
@@ -399,12 +413,23 @@
     UIColor *translucentTintColor = [[TiUtils colorValue:value] _color];
     
     _translucentTintColor = translucentTintColor;
+
+    NSLog(@"[INFO] translucentTintColor : %@", translucentTintColor);
+
     
     //tint color of toolbar
-    if ([self isItClearColor:translucentTintColor])
+    if ([self isItClearColor:translucentTintColor]) {
+        NSLog(@"[INFO] setTranslucentTintColor_ is clear? %@", self.ilDefaultColorBG);
         [toolBarBG setBarTintColor:self.ilDefaultColorBG];
-    else
+        
+    } else {
+         NSLog(@"[INFO] setTranslucentTintColor_ NOt clear? %@", translucentTintColor);
+
         [toolBarBG setBarTintColor:translucentTintColor];
+   
+    }
+    
+    
 }
 
 - (void) setTranslucent_:(id)value {

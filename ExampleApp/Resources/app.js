@@ -86,11 +86,11 @@ blurView.addEventListener('click', function(e){
 	var new_color = randomColor();
 	label_color.text = new_color;
 	blurView.setTranslucentTintColor(new_color);
-	
+	//blurView.setTranslucentBackgroundColor('rgba(0, 0, 255, 0.5)');
 });
 
 blurView.addEventListener('dblclick', function(e){
-	blurView.setTranslucentTintColor('transparent');
+	blurView.setTranslucentTintColor('rgba(255, 255, 255, 0)');
 	
 });
 
