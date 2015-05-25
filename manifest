@@ -2,7 +2,7 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 0.1
+version: 0.2
 apiversion: 2
 description: A Titanium modile to provide a live blur/trunclucency effect on a Ti.View using a toolbar. iOS7 and above only.
 author: Kosso
@@ -14,5 +14,6 @@ copyright: Kosso
 name: TiKBlurLive
 moduleid: com.kosso.TiKBlurLive
 guid: 7d24d10e-318a-4b48-9932-fd585b9b913d
+architectures: armv7 arm64 i386 x86_64
 platform: iphone
-minsdk: 3.2.0.v20131117001643
+minsdk: 3.5.1.GA
